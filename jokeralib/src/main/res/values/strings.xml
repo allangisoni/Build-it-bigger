@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">jokerAlib</string>
+    <string name="showJokeText">Jokes will be shown here </string>
+</resources>
