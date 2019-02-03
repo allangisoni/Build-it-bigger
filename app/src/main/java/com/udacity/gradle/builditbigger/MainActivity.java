@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +15,13 @@ import com.example.android.jokerlib.Jokes;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
     }
 
 
@@ -43,17 +47,33 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void tellJoke(View view) {
-        //Jokes jokes = new Jokes();
+        PullJokesAsyncTask.getInstance(new JokelistenerInterface() {
+            @Override
+            public void onSearchJokeStart() {
 
-   //     Toast.makeText(this, jokes.tellJoke(), Toast.LENGTH_SHORT).show();
+            }
 
-      //  Intent intent =  new Intent(this, ShowJokes.class);
-      //  intent.putExtra("passedJoke", jokes.tellJoke());
-       // startActivity(intent);
+            @Override
+            public void onSearchJokeFinish(String result) {
 
-      //  new PullJokesAsyncTask().execute(this);
+                ShowJokeActivity(result);
+
+            }
+
+        });
     }
+
+    // Open the activity from Android library to show joke
+    private void ShowJokeActivity(String result) {
+        Intent myIntent = new Intent(context, ShowJokes.class );
+        myIntent.putExtra("passedJoke",result);
+        context.startActivity(myIntent);
+    }
+
+
+
 
 
 }

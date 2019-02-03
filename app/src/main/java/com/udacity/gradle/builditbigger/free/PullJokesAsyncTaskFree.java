@@ -1,31 +1,32 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.free;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
+import com.udacity.gradle.builditbigger.JokelistenerInterface;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-public class PullJokesAsyncTask extends AsyncTask<Context, Void, String> {
+public class PullJokesAsyncTaskFree extends AsyncTask<Context, Void, String> {
 
     private static MyApi myApiService = null;
     private Context context;
-    private MainActivityFragment mainActivityFragment;
+    private com.udacity.gradle.builditbigger.free.MainActivityFragment mainActivityFragment;
     private JokelistenerInterface jokelistenerInterface;
 
-    private PullJokesAsyncTask(JokelistenerInterface myjokelistenerInterface){
+
+    private PullJokesAsyncTaskFree(JokelistenerInterface myjokelistenerInterface){
         jokelistenerInterface = myjokelistenerInterface;
     }
 
- public static void getInstance(JokelistenerInterface listener) {
-        new PullJokesAsyncTask(listener).execute();
+   public static void getInstance(JokelistenerInterface listener) {
+        new PullJokesAsyncTaskFree(listener).execute();
     }
 
     @Override
@@ -64,8 +65,6 @@ public class PullJokesAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-
         jokelistenerInterface.onSearchJokeFinish(result);
-
     }
 }
