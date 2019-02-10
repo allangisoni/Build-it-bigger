@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.cloud.tools.endpoints-framework-client'
 
 
+
 buildscript {
     repositories {
         jcenter()
@@ -15,7 +16,7 @@ buildscript {
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '26.0.3'
+    buildToolsVersion '27.0.3'
     flavorDimensions "versionCode"
 
 
@@ -55,17 +56,18 @@ android {
 
     productFlavors {
         free {
-            applicationId "com.udacity.gradle.builditbigger.free"
-            versionName "1.0­free"
+            applicationId "com.udacity.gradle.builtitbigger.free"
+            versionName "1.0-free"
         }
 
         paid {
             applicationId "com.udacity.gradle.builditbigger.paid"
-            versionName "1.0­paid"
+            versionName "1.0-paid"
         }
     }
 
 
+    //sourceSets { paid { java.srcDirs = ['src/paid/java', 'src/paid/java/2'] } }
 }
 
 dependencies {
@@ -76,10 +78,11 @@ dependencies {
     implementation 'com.android.support:animated-vector-drawable:28.0.0'
     implementation 'com.android.support:customtabs:28.0.0'
     implementation 'com.android.support:exifinterface:28.0.0'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+    freeImplementation 'com.google.android.gms:play-services-ads:11.8.0'
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
+
     implementation project(":jokerlib")
     implementation project(":jokeralib")
 

@@ -12,11 +12,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.example.android.jokeralib.ShowJokes;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
-import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
+
 
 
 /**

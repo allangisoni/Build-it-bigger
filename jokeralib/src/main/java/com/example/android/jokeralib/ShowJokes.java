@@ -5,20 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class ShowJokes extends AppCompatActivity {
 
-    String displayJoke = "";
-    TextView tvJokes;
+    private String displayJoke = "";
+   // TextView tvJokes;
+
+   @BindView(R2.id.tvJoke) TextView tvJokes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_jokes);
 
         tvJokes = findViewById(R.id.tvJoke);
-      // ButterKnife.bind(this);
+      ButterKnife.bind(this);
 
         Intent intent = getIntent();
         displayJoke = intent.getStringExtra("passedJoke");

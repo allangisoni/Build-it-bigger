@@ -1,5 +1,3 @@
-package com.udacity.gradle.builditbigger.free;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -17,7 +15,7 @@ public class PullJokesAsyncTaskFree extends AsyncTask<Context, Void, String> {
 
     private static MyApi myApiService = null;
     private Context context;
-    private com.udacity.gradle.builditbigger.free.MainActivityFragment mainActivityFragment;
+    MainActivityFragment mainActivityFragment;
     private JokelistenerInterface jokelistenerInterface;
 
 
